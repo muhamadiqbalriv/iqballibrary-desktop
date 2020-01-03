@@ -9,6 +9,8 @@ Iqbal Library adalah sebuah aplikasi perpustakaan sederhana berbasis desktop yan
 4. Manage Pegawai Perpustakaan (CRUD) + Create Akun/User
 5. Manage Peminjaman (CRUD)
 6. Manage Kunjungan (CRUD)
+7. Cetak Laporan
+8. Monitoring jumlah Data
 
 Project ini saya peruntukan untuk pembelajaran atau sebagai bahan referensi bagi temen-temen yang sedang belajar CRUD dengan JAVA di Netbeans IDE.
 
