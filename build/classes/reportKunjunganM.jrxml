@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a61dd42f-3d06-47dc-9e1b-b6518d4a6c91">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<queryString language="SQL">
+		<![CDATA[SELECT kunjungan.id_kunjungan as 'Id', anggota.nama as 'Pengunjung', kunjungan.tgl_kunjungan as 'Tanggal Kunjungan', kunjungan.tujuan as 'Tujuan' from kunjungan JOIN anggota ON kunjungan.id_anggota=anggota.id_anggota WHERE MONTH(kunjungan.tgl_kunjungan) = 01 AND YEAR(kunjungan.tgl_kunjungan) = 2020]]>
+	</queryString>
+	<field name="Id" class="java.lang.Integer"/>
+	<field name="Pengunjung" class="java.lang.String"/>
+	<field name="Tanggal Kunjungan" class="java.sql.Date"/>
+	<field name="Tujuan" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="136" splitType="Stretch">
+			<image>
+				<reportElement uuid="1c229aa8-357f-4f05-af18-cc29dc1b2161" x="1" y="0" width="138" height="119"/>
+				<imageExpression><![CDATA["library-circle.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement uuid="8dbbbdf1-a22c-44dc-a339-6368c9511302" style="Title" x="139" y="0" width="302" height="62"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Brush Script MT" size="50" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Iqbal Library]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b490e749-707f-4aa8-a6bf-6164efe71e0b" style="SubTitle" x="141" y="62" width="300" height="22"/>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Laporan pengunjung bulan Januari 2020]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="f7ad76d3-15eb-42d5-9da5-877356925069" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="105b1b05-a342-45dd-aa46-356577c6218f" style="Column header" x="0" y="0" width="138" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[No Kunjungan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c0f2a804-c5e8-440d-b8ba-f24f1e69328c" style="Column header" x="138" y="0" width="138" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Nama Pengunjung]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="714104b8-1adf-4560-a5c6-f83a2b2b709c" style="Column header" x="276" y="0" width="138" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Tanggal Kunjungan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a2034272-e52b-472e-9cbe-acc9693a1c38" style="Column header" x="414" y="0" width="138" height="15" forecolor="#736343"/>
+				<textElement/>
+				<text><![CDATA[Tujuan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<frame>
+				<reportElement uuid="bb86469b-3e41-4612-81f6-984a14f7cb27" style="Row" mode="Opaque" x="0" y="0" width="555" height="15"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="4562b9a4-f040-46fd-aff9-30f0ef2d9357" style="Detail" x="0" y="0" width="138" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Id}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="68a06bfd-715c-42fc-a1e7-d5ae3df12e10" style="Detail" x="138" y="0" width="138" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Pengunjung}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="dec7fc6b-535c-4520-b5df-7163f3666761" style="Detail" x="276" y="0" width="138" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Tanggal Kunjungan}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement uuid="af19c580-50a4-42ed-bab3-708cbf7de9ca" style="Detail" x="414" y="0" width="138" height="15"/>
+					<textElement/>
+					<textFieldExpression><![CDATA[$F{Tujuan}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="362d35c2-73f6-48c8-a5bf-ae76e43c24c5" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="5e55047d-a483-4a47-b891-34191f648024" mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#FF9900" backcolor="#F2EBDF"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="de67909d-0105-4356-89b6-703cd86fb23c" style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="ef314b2d-24e3-4297-bbdf-d67e50f9867e" style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="1493178c-f115-44e4-90de-424d7fddf1b8" style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
